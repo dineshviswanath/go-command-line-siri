@@ -1,4 +1,3 @@
-
 # Personal Command-line Assistant
 ```
 export ENV_TWT_CONSUMER_KEY="3yBdRC..."
@@ -17,9 +16,9 @@ siri siri.go
 
 
 ## ToDo
-+ Send Tweets
-- Clean trash bin
-- Clean docker images
-- Clean desktop
-- Hide Notifications
-- Start DND
+- [x] Send Tweets
+- [ ] Clean trash bin
+- [ ] Clean docker images
+- [ ] Clean desktop
+- [ ] Hide Notifications
+- [ ] Start DND
