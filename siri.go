@@ -23,13 +23,13 @@ func main() {
 	client := twitter.NewClient(httpClient)
 
 	// Send a Tweet
-	tweet, resp, err := client.Statuses.Update(msg, nil)
+	_, _, err := client.Statuses.Update(msg, nil)
 
 	if err != nil {
 		fmt.Println(`Error`)
 		fmt.Print(err)
 	}
 
-	fmt.Printf("> Tweet sent", tweet, resp)
+	fmt.Printf("Tweet sent!")
 
 }
