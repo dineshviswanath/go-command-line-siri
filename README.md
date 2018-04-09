@@ -17,6 +17,8 @@ siri siri.go
 
 ## ToDo
 - [x] Send Tweets
+- [ ] Add tests in project
+- [ ] Toggle WFH and office settings in mac
 - [ ] Clean trash bin
 - [ ] Clean docker images
 - [ ] Clean desktop
