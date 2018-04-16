@@ -1,17 +1,38 @@
 # Personal Command-line Assistant
+
+
+## Install without using Docker (🤨)
+
+Pre-requisite:
+ - Golang installed
+ - git
 ```
+
+cd ~/go/src/github.com/
+
+git clone git@github.com:dineshviswanath/go-command-line-siri.git
+
 export ENV_TWT_CONSUMER_KEY="3yBdRC..."
 export ENV_TWT_CONSUMER_SECRET="1AButlZjbaD..."
 export ENV_TWT_TOKEN_KEY="18602..."
 export ENV_TWT_TOKEN_SECRET="1mau..."
 
-go run siri.go "this is my first tweet"
+go get github.com/dghubble/go-twitter/twitter
+go get github.com/dghubble/oauth1
 
-$ go build siri.go
-$ ls
-siri siri.go
+go build siri.go
+./siri "<UsuallyUselessTweetGoesHere>"
+```
 
- ./siri "this is my first tweet"
+
+## Install with Docker (🤩)
+
+Pre-requisite:
+ - docker installed
+
+```
+docker build -t my-go-commandline-siri .
+docker run --rm my-go-commandline-siri ./app "<UsuallyUselessTweetGoesHere>"
 ```
 
 
