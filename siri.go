@@ -6,7 +6,12 @@ import (
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/subosito/gotenv"
 )
+
+func init() {
+	gotenv.Load(".env.config")
+}
 
 func main() {
 
@@ -33,8 +38,13 @@ func tweet(msg string) bool {
 	tokenKey := os.Getenv("ENV_TWT_TOKEN_KEY")
 	tokenSecret := os.Getenv("ENV_TWT_TOKEN_SECRET")
 
+	printSmt := []string{consumerKey, consumerSecret, tokenKey, tokenSecret}
+	fmt.Println(printSmt)
+
 	config := oauth1.NewConfig(consumerKey, consumerSecret)
+	fmt.Println(config)
 	token := oauth1.NewToken(tokenKey, tokenSecret)
+	fmt.Println(token)
 	httpClient := config.Client(oauth1.NoContext, token)
 
 	// Twitter client
@@ -44,7 +54,7 @@ func tweet(msg string) bool {
 	_, _, err := client.Statuses.Update(msg, nil)
 
 	if err != nil {
-		fmt.Println(`Error`)
+		fmt.Print(`Error: `)
 		fmt.Print(err)
 	} else {
 		isTweetSent = true
