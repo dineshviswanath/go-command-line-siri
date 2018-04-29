@@ -11,4 +11,4 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/dineshviswanath/go-commandline-siri/app .
-CMD ["sleep","10000000"]  
+CMD ["./app"]  
