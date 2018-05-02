@@ -1,9 +1,8 @@
 FROM golang:1.9 as builder
-WORKDIR /go/src/github.com/dineshviswanath/go-commandline-siri/
-RUN go get -d -v github.com/dghubble/go-twitter/twitter
-RUN go get -d -v github.com/dghubble/oauth1
-RUN go get -d -v github.com/subosito/gotenv
-ADD ./siri.go .
+WORKDIR $GOPATH/src/github.com/dineshviswanath/go-commandline-siri/
+ADD . .
+RUN go-wrapper download
+RUN go get github.com/derekparker/delve/cmd/dlv
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app siri.go
 
 

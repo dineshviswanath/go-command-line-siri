@@ -20,9 +20,7 @@ export ENV_TWT_CONSUMER_SECRET="1AButlZjbaD..."
 export ENV_TWT_TOKEN_KEY="18602..."
 export ENV_TWT_TOKEN_SECRET="1mau..."
 
-go get github.com/dghubble/go-twitter/twitter
-go get github.com/dghubble/oauth1
-go get github.com/subosito/gotenv
+go get -v -d
 
 go build siri.go
 ./siri "<UsuallyUselessTweetGoesHere>"
