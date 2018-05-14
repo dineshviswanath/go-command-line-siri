@@ -2,7 +2,6 @@ FROM golang:1.9 as builder
 WORKDIR $GOPATH/src/github.com/dineshviswanath/go-commandline-siri/
 ADD . .
 RUN go-wrapper download
-RUN go get github.com/derekparker/delve/cmd/dlv
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app siri.go
 
 

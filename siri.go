@@ -6,15 +6,9 @@ import (
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
-	"github.com/subosito/gotenv"
 )
 
-func init() {
-	gotenv.Load(".env.config")
-}
-
 func main() {
-
 	if len(os.Args) != 2 {
 		fmt.Println(`Usuage: siri <message_to_tweet>`)
 		return
@@ -52,7 +46,6 @@ func tweet(msg string) bool {
 
 	// Send a Tweet
 	_, _, err := client.Statuses.Update(msg, nil)
-
 	if err != nil {
 		fmt.Print(`Error: `)
 		fmt.Print(err)

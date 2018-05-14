@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      - ENV_TWT_CONSUMER_KEY=3yB..
+      - ENV_TWT_CONSUMER_SECRET=1ABu..
+      - ENV_TWT_TOKEN_KEY=18605330-suF..
+      - ENV_TWT_TOKEN_SECRET=1ma..
+    entrypoint: ./app "TweetGoes"
