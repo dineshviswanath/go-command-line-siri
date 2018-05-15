@@ -23,7 +23,7 @@ func main() {
 
 	t := twitter.Twitter{TweetMessage: msg}
 
-	if ok := tweet(msg); ok {
+	if ok := t.Execute(); ok {
 		fmt.Println("Tweet sent :)")
 	} else {
 		fmt.Println("Tweet could not sent :(")
