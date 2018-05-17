@@ -14,7 +14,9 @@ func init() {
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Println(`Usuage: siri <tweet> <message_to_tweet>`)
+		// TODO: make usage coming from Flag parser
+		fmt.Println(`Usuage: siri tweet <message_to_tweet>`)
+		fmt.Println(`Usuage: siri airplane <on/off>`)
 		return
 	}
 
@@ -25,8 +27,12 @@ func main() {
 	if os.Args[1] == "tweet" {
 		t := Tweet{message:os.Args[2]}
 		ok = execute(t)
+	} else if os.Args[1] == "airplane" {
+		a := Airplane{Power:os.Args[2]}
+		ok = execute(a)
 	} else {
 		fmt.Println(`Usuage: siri tweet <message_to_tweet>`)
+		fmt.Println(`Usuage: siri airplane <on/off>`)
 		return
 	}
 

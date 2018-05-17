@@ -11,10 +11,12 @@ type Wireless struct {
 	DriverName      string
 	OperatingSystem string
 	DriverCommand   string
+	Device 			string
 }
 
 
 func IdentifyDriver() (Wireless, error) {
+	// TODO: Add cases for Linux and Unix
 	log.Printf("Running the command to identify driver...")
 	_, err := exec.Command("which", "networksetup").Output()
 
@@ -54,6 +56,17 @@ func (w *Wireless) IdentifyDevice() (string, error) {
 			isWifi = true
 		}
 	}
+	w.Device = device
 	log.Printf("Device is %s", device)
 	return device, nil
+}
+
+func (w *Wireless) Toggle(state string) bool {
+	log.Printf("About to Power %s: %s...", state, w.Device)
+	_, err := exec.Command("networksetup", "-setairportpower", w.Device, state).Output()
+	if err != nil {
+		log.Printf("Error in toggling Power %s", err)
+		return false
+	}
+	return true
 }

@@ -23,6 +23,36 @@ type Action interface {
 	Execute() bool
 }
 
+// Airplane mode
+type Airplane struct {
+	Power string
+}
+
+//Validate for Airplane mode
+func (a Airplane) Validate() (error, bool){
+	if a.Power != "on" || a.Power != "off" {
+		return ErrInValidParam, false
+	} else {
+		return nil, true
+	}
+}
+
+//Execute the Airplane mode action
+func (a Airplane) Execute() bool {
+	err, _ := a.Validate()
+	if err != nil {
+		return false
+	}
+
+	w, err := IdentifyDriver()
+	if err != nil {
+		return false
+	}
+	w.IdentifyDevice()
+	w.Toggle(a.Power)
+	return true
+}
+
 
 // Tweet Holds Twitter.com interaction
 type Tweet struct {
