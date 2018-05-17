@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-commandline-siri/core/twitter"
+
 	"github.com/subosito/gotenv"
 )
 
@@ -13,19 +13,31 @@ func init() {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println(`Usuage: siri <message_to_tweet>`)
+	if len(os.Args) != 3 {
+		fmt.Println(`Usuage: siri <tweet> <message_to_tweet>`)
 		return
 	}
 
-	msg := os.Args[1]
+	var ok bool
+
 	// TODO: Add command parser flag
 
-	t := twitter.Twitter{TweetMessage: msg}
-
-	if ok := t.Execute(); ok {
-		fmt.Println("Tweet sent :)")
+	if os.Args[1] == "tweet" {
+		t := Tweet{message:os.Args[2]}
+		ok = execute(t)
 	} else {
-		fmt.Println("Tweet could not sent :(")
+		fmt.Println(`Usuage: siri tweet <message_to_tweet>`)
+		return
 	}
+
+	if ok {
+		fmt.Println("👍")
+	} else {
+		fmt.Println("👎")
+	}
+}
+
+
+func execute(i Action) bool {
+	return i.Execute()
 }
