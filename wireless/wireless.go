@@ -1,4 +1,4 @@
-package main
+package wireless
 
 import (
 	"os/exec"

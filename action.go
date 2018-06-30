@@ -8,6 +8,7 @@ import (
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
 	"errors"
+	"github.com/go-commandline-siri/wireless"
 )
 
 
@@ -44,7 +45,7 @@ func (a Airplane) Execute() bool {
 		return false
 	}
 
-	w, err := IdentifyDriver()
+	w, err := wireless.IdentifyDriver()
 	if err != nil {
 		return false
 	}
