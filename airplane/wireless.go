@@ -1,19 +1,18 @@
-package wireless
+package airplane
 
 import (
-	"os/exec"
 	"log"
+	"os/exec"
 	"strings"
 )
 
-// Wireless Holds abstraction for all operating system wireless driver
+// Wireless Holds abstraction for all operating system airplane driver
 type Wireless struct {
 	DriverName      string
 	OperatingSystem string
 	DriverCommand   string
-	Device 			string
+	Device          string
 }
-
 
 func IdentifyDriver() (Wireless, error) {
 	// TODO: Add cases for Linux and Unix
@@ -26,13 +25,11 @@ func IdentifyDriver() (Wireless, error) {
 	}
 
 	return Wireless{
-		DriverName: "NetworkSetup",
+		DriverName:      "NetworkSetup",
 		OperatingSystem: "MacOS",
-		DriverCommand: "networksetup",
+		DriverCommand:   "networksetup",
 	}, nil
 }
-
-
 
 func (w *Wireless) IdentifyDevice() (string, error) {
 
@@ -48,7 +45,7 @@ func (w *Wireless) IdentifyDevice() (string, error) {
 	isWifi := false
 	for _, line := range strings.Split(string(out), "\n") {
 		if isWifi {
-			device = strings.Replace(line, "Device: " , "", -1)
+			device = strings.Replace(line, "Device: ", "", -1)
 			isWifi = false
 			break
 		}

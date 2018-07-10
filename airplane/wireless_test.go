@@ -1,8 +1,8 @@
-package wireless
+package airplane
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestWireless_IdentifyDriver(t *testing.T) {
@@ -14,12 +14,11 @@ func TestWireless_IdentifyDriver(t *testing.T) {
 	assert.Equal(t, "MacOS", w.OperatingSystem)
 }
 
-
 func TestWireless_IdentifyPort(t *testing.T) {
 	w := Wireless{
-		DriverName: "NetworkSetup",
+		DriverName:      "NetworkSetup",
 		OperatingSystem: "MacOS",
-		DriverCommand: "networksetup",
+		DriverCommand:   "networksetup",
 	}
 	// TODO: Add mocks so it works on all OS
 	device, err := w.IdentifyDevice()
@@ -30,9 +29,9 @@ func TestWireless_IdentifyPort(t *testing.T) {
 
 func TestWireless_Toggle(t *testing.T) {
 	w := Wireless{
-		DriverName: "NetworkSetup",
+		DriverName:      "NetworkSetup",
 		OperatingSystem: "MacOS",
-		DriverCommand: "networksetup",
+		DriverCommand:   "networksetup",
 	}
 	// TODO: Add mocks so it works on all OS
 	w.IdentifyDevice()
