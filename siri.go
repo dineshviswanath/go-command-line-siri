@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"os"
-
 	"github.com/go-commandline-siri/airplane"
 	"github.com/go-commandline-siri/tweet"
 
+	"flag"
 	"github.com/subosito/gotenv"
 )
 
@@ -15,28 +14,20 @@ func init() {
 }
 
 func main() {
-	if len(os.Args) != 3 {
-		// TODO: make usage coming from Flag parser
-		fmt.Println(`Usage: siri tweet <message_to_tweet>`)
-		fmt.Println(`Usage: siri airplane <on/off>`)
-		return
-	}
+
+	tweetPtr := flag.Bool("tweet", false, "-tweet 'Tweet Goes here'")
+	airplanePtr := flag.Bool("airplane", false, "-airplane '<on/off>'")
+
+	flag.Parse()
 
 	var ok bool
 
-	// TODO: Add command parser flag
-
-	if os.Args[1] == "tweet" {
-		t := tweet.Tweet{os.Args[2]}
+	if *tweetPtr {
+		t := tweet.Tweet{flag.Args()[0]}
 		ok = execute(t)
-
-	} else if os.Args[1] == "airplane" {
-		a := airplane.Airplane{Power: os.Args[2]}
+	} else if *airplanePtr {
+		a := airplane.Airplane{Power: flag.Args()[0]}
 		ok = execute(a)
-	} else {
-		fmt.Println(`Usage: siri tweet <message_to_tweet>`)
-		fmt.Println(`Usage: siri airplane <on/off>`)
-		return
 	}
 
 	if ok {
