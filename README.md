@@ -23,7 +23,7 @@ export ENV_TWT_TOKEN_SECRET="1mau..."
 go get -v -d
 
 go build siri.go
-./siri "<UsuallyUselessTweetGoesHere>"
+./siri -tweet "<UsuallyUselessTweetGoesHere>"
 ```
 
 
@@ -34,16 +34,15 @@ Pre-requisite:
 
 ```
 docker build -t my-go-commandline-siri .
-docker run --rm my-go-commandline-siri ./app "<UsuallyUselessTweetGoesHere>"
+docker run --rm my-go-commandline-siri ./app -tweet "<UsuallyUselessTweetGoesHere>"
 ```
 
 
 ## ToDo
 - [x] Send Tweets
-- [ ] Add tests in project
-- [ ] Toggle WFH and office settings in mac
-- [ ] Clean trash bin
+- [x] Add tests in project
+- [ ] Start DND
 - [ ] Clean docker images
 - [ ] Clean desktop
+- [ ] Clean trash bin
 - [ ] Hide Notifications
-- [ ] Start DND

@@ -1,18 +1,6 @@
 package airplane
 
-import "errors"
-
-// ErrInValidParam Throw this when invalid param passed to Action
-var ErrInValidParam = errors.New("Invalid param passed")
-
-// ErrUnableToExecute Throw this when unable to execute the Action
-var ErrUnableToExecute = errors.New("Unable to execute")
-
-// Action Abstraction of Actions
-type Action interface {
-	Validate() (error, bool)
-	Execute() bool
-}
+import "github.com/go-commandline-siri/util"
 
 // Airplane mode
 type Airplane struct {
@@ -22,7 +10,7 @@ type Airplane struct {
 //Validate for Airplane mode
 func (a Airplane) Validate() (error, bool) {
 	if a.Power != "on" && a.Power != "off" {
-		return ErrInValidParam, false
+		return util.ErrInValidParam, false
 	} else {
 		return nil, true
 	}

@@ -4,16 +4,10 @@ import (
 	"github.com/dghubble/oauth1"
 	"os"
 
-	"errors"
 	"fmt"
 	"github.com/dghubble/go-twitter/twitter"
+	"github.com/go-commandline-siri/util"
 )
-
-// ErrInValidParam Throw this when invalid param passed to Action
-var ErrInValidParam = errors.New("Invalid param passed")
-
-// ErrUnableToExecute Throw this when unable to execute the Action
-var ErrUnableToExecute = errors.New("Unable to execute")
 
 // Tweet Holds Twitter.com interaction
 type Tweet struct {
@@ -23,7 +17,7 @@ type Tweet struct {
 // Validate Check if the Tweet param is valid
 func (t Tweet) Validate() (error, bool) {
 	if len(t.Message) < 5 {
-		return ErrInValidParam, false
+		return util.ErrInValidParam, false
 	} else {
 		return nil, true
 	}
